@@ -1,4 +1,5 @@
 #!/bin/sh
+
 set -e
 
 echo "[ENTRYPOINT] Generating OpenAlgo .env..."
@@ -35,12 +36,56 @@ WEBSOCKET_URL='${WEBSOCKET_URL}'
 TRUST_PROXY_HEADERS='TRUE'
 NGROK_ALLOW='FALSE'
 
+LOGIN_RATE_LIMIT_MIN='5 per minute'
+LOGIN_RATE_LIMIT_HOUR='25 per hour'
+RESET_RATE_LIMIT='15 per hour'
+API_RATE_LIMIT='50 per second'
+ORDER_RATE_LIMIT='10 per second'
+SMART_ORDER_RATE_LIMIT='10 per second'
+WEBHOOK_RATE_LIMIT='100 per minute'
+STRATEGY_RATE_LIMIT='200 per minute'
+
+SESSION_EXPIRY_TIME='03:00'
+DISABLE_SESSION_EXPIRY='false'
+
+LOG_TO_FILE='False'
+LOG_LEVEL='INFO'
+LOG_DIR='log'
+LOG_FORMAT='[%(asctime)s] %(levelname)s in %(module)s: %(message)s'
+LOG_RETENTION='14'
+LOG_COLORS='True'
+FORCE_COLOR='1'
+
 OPENBLAS_NUM_THREADS='2'
 OMP_NUM_THREADS='2'
 MKL_NUM_THREADS='2'
 NUMEXPR_NUM_THREADS='2'
 NUMBA_NUM_THREADS='2'
 STRATEGY_MEMORY_LIMIT_MB='512'
+
+HEALTH_MEMORY_WARNING_THRESHOLD='3000'
+HEALTH_MEMORY_CRITICAL_THRESHOLD='5000'
+
+CORS_ENABLED='TRUE'
+CORS_ALLOWED_ORIGINS='https://openalgo.easytalents.fr'
+CORS_ALLOWED_METHODS='GET,POST,DELETE,PUT,PATCH'
+CORS_ALLOWED_HEADERS='Content-Type,Authorization,X-Requested-With'
+
+CSP_ENABLED='TRUE'
+CSP_REPORT_ONLY='FALSE'
+CSP_DEFAULT_SRC="'self'"
+CSP_SCRIPT_SRC="'self' 'unsafe-inline' https://cdn.socket.io https://static.cloudflareinsights.com"
+CSP_STYLE_SRC="'self' 'unsafe-inline'"
+CSP_IMG_SRC="'self' data:"
+CSP_CONNECT_SRC="'self' wss: ws:"
+CSP_FONT_SRC="'self'"
+CSP_OBJECT_SRC="'none'"
+
+CSRF_ENABLED='TRUE'
+
+SESSION_COOKIE_NAME='openalgo_session'
+CSRF_COOKIE_NAME='openalgo_csrf'
+
 EOF
 
 echo "[ENTRYPOINT] .env generated"
