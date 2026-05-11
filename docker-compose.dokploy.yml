@@ -6,6 +6,10 @@ services:
 
     restart: unless-stopped
 
+    entrypoint: ["/bin/sh", "/app/entrypoint.sh"]
+
+    command: ["python", "app.py"]
+
     expose:
       - "5000"
       - "8765"

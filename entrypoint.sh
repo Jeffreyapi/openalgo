@@ -1,0 +1,22 @@
+#!/bin/sh
+
+set -e
+
+echo "[ENTRYPOINT] Generating .env file..."
+
+cat > .env <<EOF
+HOST_SERVER=${HOST_SERVER}
+REDIRECT_URL=${REDIRECT_URL}
+BROKER_API_KEY=${BROKER_API_KEY}
+BROKER_API_SECRET=${BROKER_API_SECRET}
+APP_KEY=${APP_KEY}
+API_KEY_PEPPER=${API_KEY_PEPPER}
+
+FLASK_ENV=${FLASK_ENV}
+FLASK_DEBUG=${FLASK_DEBUG}
+TZ=${TZ}
+EOF
+
+echo "[ENTRYPOINT] .env generated"
+
+exec "$@"
