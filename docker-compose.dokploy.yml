@@ -1,0 +1,47 @@
+services:
+  openalgo:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    restart: unless-stopped
+
+    expose:
+      - "5000"
+      - "8765"
+
+    volumes:
+      - openalgo_db:/app/db
+      - openalgo_log:/app/log
+      - openalgo_strategies:/app/strategies
+      - openalgo_keys:/app/keys
+      - openalgo_tmp:/app/tmp
+
+    environment:
+      FLASK_ENV: production
+      FLASK_DEBUG: "0"
+      TZ: Africa/Abidjan
+
+      OPENBLAS_NUM_THREADS: "2"
+      OMP_NUM_THREADS: "2"
+      MKL_NUM_THREADS: "2"
+      NUMEXPR_NUM_THREADS: "2"
+      NUMBA_NUM_THREADS: "2"
+
+      STRATEGY_MEMORY_LIMIT_MB: "512"
+
+    shm_size: 512m
+
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:5000/auth/check-setup"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+volumes:
+  openalgo_db:
+  openalgo_log:
+  openalgo_strategies:
+  openalgo_keys:
+  openalgo_tmp:
