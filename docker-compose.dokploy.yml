@@ -38,7 +38,6 @@ services:
 
       WEBSOCKET_HOST: "0.0.0.0"
       WEBSOCKET_PORT: "8765"
-      WEBSOCKET_URL: "wss://openalgo.ton-domaine.com"
 
       TZ: "Africa/Abidjan"
 
