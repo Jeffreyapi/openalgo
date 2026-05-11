@@ -86,6 +86,9 @@ CSRF_ENABLED='TRUE'
 SESSION_COOKIE_NAME='openalgo_session'
 CSRF_COOKIE_NAME='openalgo_csrf'
 
+VALID_BROKERS='fivepaisa,fivepaisaxts,aliceblue,angel,compositedge,dhan,dhan_sandbox,definedge,deltaexchange,firstock,flattrade,fyers,groww,ibulls,iifl,iiflcapital,indmoney,jainamxts,kotak,motilal,mstock,nubra,paytm,pocketful,rmoney,samco,shoonya,tradejini,upstox,wisdom,zebu,zerodha'
+
+
 EOF
 
 echo "[ENTRYPOINT] .env generated"
